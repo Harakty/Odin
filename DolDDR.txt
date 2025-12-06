@@ -1,0 +1,28 @@
+DoLDDR Project Folder: D:\Claude-Projects\DoLRDR
+DOLSharp Project Folder: D:\Claude-Projects\DOLSharp-2.2.7.3908
+Project FullName: DoL Radar
+
+Lo scopo di questo progetto é di Creare un Radar per il Client DAoC (Dark Age of Camelot)
+DAoC é un Gioco MMORPG Sviluppato da una produttore esterno.
+NON possiamo modificare il Client di gioco ma conosciamo TUTTE le informazioni sui pacchetti di rete inviati e ricevuti.
+Inoltre possiamo dire al Client di collegarsi a DoLDDR invece che al Server.
+In questo modo Il Server non saprá dell'esistenza di DoLDDR.
+
+Lo scopo del progetto é di creare un Programma (EXE o WinEXE) in C# che si frapponga fra il client ed il Server e che leggendo le informazioni scambiate disegni un Radar con il posizionamento degli oggetti del gioco. (Player, Mob, NPC, Itmes, Drops, WorldItems, Buildings)
+
+DOLSharp é il progetto del Server.
+Dobbiamo usare DOLSharp per ricavare le informazioni per generare il codice di DoLDDR.
+
+DoLDDR deve quindi Partire in Attesa di connessioni da parte del client e:
+1) Quando riceve una connessione dal Client a DoLDDR aprire una connessione da DoLDDR al Server.
+2) Quando riceve un pacchetto TCP o UDP dal Client a DoLDDR inviare il pacchetto TCP o UDP da DoLDDR al Server.
+3) Quando riceve un pacchetto TCP o UDP dal Server a DoLDDR inviare il pacchetto TCP o UDP da DoLDDR al Client.
+4) Deve inoltre gestire gli altri stati della connessione.
+Per capire come il server ed il client aprono le connessioni e gestiscono i pacchetti devi guardare il codice di DOLSharp.
+5) Ogni volta che riceve un pacchetto dal client o dal server deve chiamare una funzione ManagePacket() passando il pacchetto ricevuto.
+Nella prima release la funzione ManagePacket() non fa nulla.
+
+Cosí facendo saremo in gradi di leggere tutte le informazioni scambiare fra client e server e viceversa.
+
+Il passaggio successivo sará decriptare le informazioni passate a ManagePacket(), filtrarle per Packet ID ed darle ad una dll esterna che disegnerá il radar.
+
