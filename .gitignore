@@ -48,3 +48,6 @@ appsettings.Local.json
 # Claude Code local files
 .claude/
 1.txt
+
+# Start Links folder
+Start Links/
